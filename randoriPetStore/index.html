@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Petshop Manager</M></title>
+
+    <link rel="stylesheet" href="jsLibs/SlickGrid/slick.grid.css" type="text/css"/>
+    <link rel="stylesheet" href="jsLibs/SlickGrid/css/slick-default-theme.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/style/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style/style.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="generated/lib/randori-guice-framework.js"></script>
+    <script type="text/javascript" src="generated/lib/randori-framework.js"></script>
+    <script type="text/javascript" src="./jsLibs/bootstrap/bootstrap.js"></script>
+
+    <script type="text/javascript" src="jsLibs/SlickGrid/lib/jquery.event.drag-2.2.js"></script>
+    <script type="text/javascript" src="jsLibs/SlickGrid/slick.core.js"></script>
+    <script type="text/javascript" src="jsLibs/SlickGrid/slick.grid.js"></script>
+    <script type="text/javascript" src="jsLibs/SlickGrid/plugins/slick.rowselectionmodel.js"></script>
+
+    <link rel="stylesheet/randori" href="assets/behaviors.css" type="text/css"/>
+
+
+    <script type="text/javascript">
+        //Start the randori framework
+        jQuery(function () {
+            var randoriApp = new randori.startup.RandoriBootstrap(document);
+            randoriApp.launch( true );
+        });
+    </script>
+</head>
+<body class="simpleApp">
+
+    <div id="mainViewStack" class="viewStack" style="position:relative"/>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* Behaviors */
+.tabBar {
+    -randori-behavior: "behaviors.tabbar.TabBar";
+}
+.viewStack {
+    -randori-behavior: "randori.behaviors.ViewStack";
+}
+.simpleList {
+    -randori-behavior: "randori.behaviors.SimpleList";
+}
+.menuList{
+    -randori-behavior: "behaviors.MenuList";
+}
+/* Mediators */
+.simpleApp {
+    -randori-context: "context.BoringContext";
+    -randori-mediator: "mediators.IndexMediator";
+}
+.loginFragment{
+    -randori-mediator: "mediators.LoginMediator";
+}
+.contentFragment{
+    -randori-mediator: "mediators.ContentMediator";
+}
+.miscView {
+    -randori-mediator: "mediators.products.MiscMediator";
+}
+.animalView {
+    -randori-mediator: "mediators.products.AnimalMediator";
+}
+.animalDetailView {
+    -randori-mediator: "mediators.products.AnimalDetailMediator";
+}
+
+.miscDetailView {
+    -randori-mediator: "mediators.products.MiscDetailMediator";
+}
+
+/* Fragments */
+.loginFragment {
+    -randori-fragment: "fragments/LoginFragment.html";
+}
+.contentFragment {
+    -randori-fragment: "fragments/ContentFragment.html";
+}
+
+.textInput {
+    -randori-behavior: "behaviors.components.TextInput";
+}
+
+.dropDown {
+    -randori-behavior: "behaviors.components.DropDown";
+}
+
+.textArea {
+    -randori-behavior: "behaviors.components.TextArea";
+}
+.image {
+    -randori-behavior: "behaviors.components.Image";
+}

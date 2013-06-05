@@ -36,12 +36,28 @@
     -randori-mediator: "mediators.products.MiscDetailMediator";
 }
 
+.modalFragment {
+    -randori-mediator: "mediators.ModalMediator";
+}
+.newAnimalMediator {
+    -randori-mediator: "mediators.products.NewAnimalMediator";
+}
+.newMiscMediator {
+    -randori-mediator: "mediators.products.NewMiscMediator";
+}
+.statsView{
+    -randori-mediator: "mediators.stats.StatsMediator";
+}
+
 /* Fragments */
 .loginFragment {
     -randori-fragment: "fragments/LoginFragment.html";
 }
 .contentFragment {
     -randori-fragment: "fragments/ContentFragment.html";
+}
+.modalFragment {
+    -randori-fragment: "fragments/ModalFragment.html";
 }
 
 .textInput {

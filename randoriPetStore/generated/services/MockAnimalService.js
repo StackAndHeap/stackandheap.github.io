@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Tue Jun 04 16:25:46 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
 
 if (typeof services == "undefined")
 	var services = {};
@@ -82,6 +82,21 @@ services.MockAnimalService.prototype.save = function(id, value, dataField) {
 			animal[dataField] = value;
 		}
 	}
+};
+
+services.MockAnimalService.prototype.addNew = function(animal) {
+	var lastAnimal = this._data[(this._data.length - 1)];
+	animal.id = lastAnimal.id + 1;
+	animal.picture = "http:\/\/placehold.it\/512x512";
+	animal.picture_large = "http:\/\/placehold.it\/512x512";
+	this._data[this._data.length] = animal;
+	var promise = new randori.async.Promise();
+	var timer = new randori.timer.Timer(20, 1);
+	timer.timerTick.add(function() {
+		promise.resolve(true);
+	});
+	timer.start();
+	return promise;
 };
 
 services.MockAnimalService.className = "services.MockAnimalService";

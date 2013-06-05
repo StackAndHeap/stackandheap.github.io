@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Tue Jun 04 16:27:10 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
 
 if (typeof mediators == "undefined")
 	var mediators = {};
@@ -120,17 +120,12 @@ mediators.ContentMediator.prototype.getDefaultMenuItems = function() {
 	miscBtn.label = "Misc";
 	miscBtn.url = "views\/content\/products\/misc.html";
 	miscBtn.route = "misc";
-	var closedOrdersBtn = {};
-	closedOrdersBtn.id = "closedOrdersBtn";
-	closedOrdersBtn.label = "Closed Orders";
-	closedOrdersBtn.url = "views\/content\/products\/animals.html";
-	closedOrdersBtn.route = "closedOrders";
-	var processingOrdersBtn = {};
-	processingOrdersBtn.id = "processingOrdersBtn";
-	processingOrdersBtn.label = "Processing Orders";
-	processingOrdersBtn.route = "processingOrders";
-	processingOrdersBtn.url = "views\/content\/products\/animals.html";
-	return [animalsBtn, miscBtn, closedOrdersBtn, processingOrdersBtn];
+	var statsButton = {};
+	statsButton.id = "statsButton";
+	statsButton.label = "Statistics";
+	statsButton.route = "statistics";
+	statsButton.url = "views\/content\/stats\/stats.html";
+	return [animalsBtn, miscBtn, statsButton];
 };
 
 $inherit(mediators.ContentMediator, randori.behaviors.AbstractMediator);

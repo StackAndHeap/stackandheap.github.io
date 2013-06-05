@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Tue Jun 04 16:25:46 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
 
 if (typeof mediators == "undefined")
 	var mediators = {};
@@ -10,6 +10,7 @@ mediators.products.AnimalMediator = function() {
 	this.appBus = null;
 	this.animalService = null;
 	this.grid = null;
+	this.addBtn = null;
 	this.filter = null;
 	randori.behaviors.AbstractMediator.call(this);
 	
@@ -18,11 +19,20 @@ mediators.products.AnimalMediator = function() {
 mediators.products.AnimalMediator.prototype.onRegister = function() {
 	this.filter.keyup($createStaticDelegate(this, this.filterData));
 	this.animalService.getAll().then($createStaticDelegate(this, this.handleResult));
+	this.appBus.reloadData.add($createStaticDelegate(this, this.reloadData));
+	this.addBtn.click($createStaticDelegate(this, this.addBtnClickedHandler));
+};
+
+mediators.products.AnimalMediator.prototype.reloadData = function() {
+	this.animalService.get(this.filter.val()).then($createStaticDelegate(this, this.handleResult));
+};
+
+mediators.products.AnimalMediator.prototype.addBtnClickedHandler = function(e) {
+	this.appBus.showModal.dispatch("views\/content\/products\/animal-new.html", "New animal");
 };
 
 mediators.products.AnimalMediator.prototype.filterData = function(event) {
-	var input = event.target;
-	this.animalService.get(input.value).then($createStaticDelegate(this, this.handleResult));
+	this.animalService.get(this.filter.val()).then($createStaticDelegate(this, this.handleResult));
 };
 
 mediators.products.AnimalMediator.prototype.handleResult = function(result) {
@@ -35,8 +45,7 @@ mediators.products.AnimalMediator.prototype.loadGrid = function(result) {
 	var col4 = {id:"animal", name:"Animal", field:"animal", sortable:true, formatter:null};
 	var col6 = {id:"gender", name:"Gender", field:"gender", sortable:true, formatter:null};
 	var col7 = {id:"about", name:"About", field:"about", sortable:true, formatter:null};
-	var col8 = {id:"registered", name:"Registered", field:"registered", sortable:true, formatter:null};
-	var columns = [col1, col2, col4, col6, col7, col8];
+	var columns = [col1, col2, col4, col6, col7];
 	var options = {};
 	options.enableCellNavigation = true;
 	options.enableColumnReorder = false;
@@ -101,6 +110,7 @@ mediators.products.AnimalMediator.injectionPoints = function(t) {
 			p = randori.behaviors.AbstractMediator.injectionPoints(t);
 			p.push({n:'gridContainer'});
 			p.push({n:'filter'});
+			p.push({n:'addBtn'});
 			break;
 		default:
 			p = [];

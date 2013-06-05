@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Tue Jun 04 16:25:46 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
 
 if (typeof services == "undefined")
 	var services = {};
@@ -78,6 +78,21 @@ services.MockMiscService.prototype.getById = function(id) {
 	var timer = new randori.timer.Timer(20, 1);
 	timer.timerTick.add(function() {
 		promise.resolve(selectedItem);
+	});
+	timer.start();
+	return promise;
+};
+
+services.MockMiscService.prototype.addNew = function(misc) {
+	var lastMisc = this._data[(this._data.length - 1)];
+	misc.id = lastMisc.id + 1;
+	misc.picture = "http:\/\/placehold.it\/512x512";
+	misc.picture_large = "http:\/\/placehold.it\/512x512";
+	this._data[this._data.length] = misc;
+	var promise = new randori.async.Promise();
+	var timer = new randori.timer.Timer(20, 1);
+	timer.timerTick.add(function() {
+		promise.resolve(true);
 	});
 	timer.start();
 	return promise;

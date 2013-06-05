@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 15:07:08 CEST 2013 */
 
 if (typeof behaviors == "undefined")
 	var behaviors = {};
@@ -87,8 +87,14 @@ behaviors.components.DropDown.prototype.commit = function(value) {
 
 behaviors.components.DropDown.prototype.renderViewState = function(node) {
 	var paragraph = jQuery("<p><\/p>");
+	paragraph.css("width", "100%");
 	paragraph.click($createStaticDelegate(this, this.gotoEditState));
-	paragraph.html(this._label + ": " + this._value);
+	paragraph.html("<b>" + this._label + ": <\/b>" + this._value);
+	var button = jQuery("<i><\/i>");
+	button.addClass("icon-edit");
+	button.addClass("pull-right");
+	button.css("cursor", "pointer");
+	paragraph.append(button);
 	node.append(paragraph);
 };
 

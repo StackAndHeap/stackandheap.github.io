@@ -1,4 +1,4 @@
-/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 14:31:37 CEST 2013 */
+/** Compiled by the Randori compiler v0.2.4 on Wed Jun 05 15:07:08 CEST 2013 */
 
 if (typeof behaviors == "undefined")
 	var behaviors = {};
@@ -92,10 +92,24 @@ behaviors.components.TextArea.prototype.cancel = function() {
 };
 
 behaviors.components.TextArea.prototype.renderViewState = function(node) {
+	var div = jQuery("<div><\/div>");
+	div.css("width", "100%");
+	div.css("display", "inline");
+	div.css("vertical-align", "top");
+	div.click($createStaticDelegate(this, this.gotoEditState));
+	var label = jQuery("<p><\/p>");
+	label.html("<b>" + this._label + ": " + "<\/b>");
+	div.append(label);
 	var paragraph = jQuery("<p><\/p>");
-	paragraph.click($createStaticDelegate(this, this.gotoEditState));
-	paragraph.html(this._label + ": " + this._value);
-	node.append(paragraph);
+	paragraph.html(this._value);
+	div.append(paragraph);
+	var button = jQuery("<i><\/i>");
+	button.addClass("icon-edit");
+	button.addClass("pull-right");
+	button.css("cursor", "pointer");
+	button.css("vertical-align", "top");
+	div.append(button);
+	node.append(div);
 };
 
 behaviors.components.TextArea.prototype.gotoEditState = function(e) {
